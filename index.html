@@ -270,6 +270,24 @@ header {
     </div>
   </div>
 </footer>
+<script>
+  const menuButton = document.getElementById('menuButton');
+  const navlinks = document.getElementById('navlinks');
+
+  menuButton.addEventListener('click', () => {
+    const open = navlinks.classList.toggle('open');
+    menuButton.setAttribute('aria-expanded', String(open));
+  });
+
+  navlinks.querySelectorAll('a').forEach(link => link.addEventListener('click', () => {
+    navlinks.classList.remove('open');
+    menuButton.setAttribute('aria-expanded', 'false');
+  }));
+
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
 
   
 
