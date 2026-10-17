@@ -262,23 +262,18 @@ header {
   </main>
 
   <footer>
-    <div class="wrap footer-row">
-      <div>© <span id="year"></span> Teddy. Dibuat dengan niat baik.</div>
-      <div class="socials"><a class="textlink" href="#" aria-label="Instagram">Instagram</a><a class="textlink" href="#" aria-label="TikTok">TikTok</a><a class="textlink" href="#" aria-label="LinkedIn">LinkedIn</a></div>
+  <div class="wrap footer-row">
+    <div>© <span id="year"></span> Teddy. Dibuat dengan niat baik.</div>
+    <div class="socials">
+      <a class="textlink" href="https://www.instagram.com/theorayz128/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">Instagram</a>
+      <a class="textlink" href="https://www.tiktok.com/@theoooyuuu" target="_blank" rel="noopener noreferrer" aria-label="TikTok">TikTok</a>
     </div>
-  </footer>
-  <script>
-    const menuButton = document.getElementById('menuButton');
-    const navlinks = document.getElementById('navlinks');
-    menuButton.addEventListener('click', () => {
-      const open = navlinks.classList.toggle('open');
-      menuButton.setAttribute('aria-expanded', String(open));
-    });
-    navlinks.querySelectorAll('a').forEach(link => link.addEventListener('click', () => {
-      navlinks.classList.remove('open');
-      menuButton.setAttribute('aria-expanded', 'false');
-    }));
-    document.getElementById('year').textContent = new Date().getFullYear();
-  </script>
-</body>
-</html>
+  </div>
+</footer>
+
+  
+
+  
+
+  
+  
