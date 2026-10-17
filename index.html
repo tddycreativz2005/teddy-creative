@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#111827">
+  <meta name="description" content="Website pribadi Teddy — kreativitas, karya, dan perjalanan membangun sesuatu yang bermakna.">
+  <title>Teddy — Personal Website</title>
+  <style>
+    :root {
+      --bg: #f7f7f4;
+      --surface: #ffffff;
+      --ink: #17211d;
+      --muted: #68736d;
+      --line: #e4e8e3;
+      --accent: #245c49;
+      --accent-light: #e7f0eb;
+      --dark: #111c18;
+      --radius: 22px;
+      --shadow: 0 18px 55px rgba(23, 33, 29, .08);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0; background: var(--bg); color: var(--ink);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.65; -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; text-decoration: none; }
+    .wrap { width: min(1100px, calc(100% - 40px)); margin: 0 auto; }
+    header {
+      position: sticky; top: 0; z-index: 10; backdrop-filter: blur(14px);
+      background: rgba(247,247,244,.86); border-bottom: 1px solid rgba(228,232,227,.8);
+    }
+    .nav { min-height: 74px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+    .brand { font-weight: 800; letter-spacing: -.06em; font-size: 1.25rem; }
+    .brand span { color: var(--accent); }
+    .navlinks { display: flex; align-items: center; gap: 26px; color: var(--muted); font-size: .92rem; }
+    .navlinks a:hover, .textlink:hover { color: var(--accent); }
+    .menu { display: none; border: 1px solid var(--line); background: white; padding: 9px 12px; border-radius: 12px; font: inherit; }
+    .hero { padding: 92px 0 76px; display: grid; grid-template-columns: 1.35fr .65fr; align-items: center; gap: 55px; }
+    .eyebrow { display: inline-flex; align-items: center; gap: 9px; color: var(--accent); font-size: .78rem; text-transform: uppercase; letter-spacing: .15em; font-weight: 800; }
+    .dot { width: 8px; height: 8px; border-radius: 50%; background: #78a58e; box-shadow: 0 0 0 5px var(--accent-light); }
+    h1 { font-size: clamp(3rem, 7vw, 5.7rem); line-height: .99; letter-spacing: -.075em; margin: 22px 0; font-weight: 780; }
+    h1 em { font-style: normal; color: var(--accent); }
+    .lead { max-width: 590px; color: var(--muted); font-size: 1.12rem; }
+    .actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 30px; }
+    .btn { display: inline-flex; justify-content: center; align-items: center; gap: 9px; border-radius: 999px; padding: 13px 20px; font-weight: 700; font-size: .93rem; border: 1px solid var(--ink); transition: transform .2s, background .2s; }
+    .btn:hover { transform: translateY(-2px); }
+    .btn.primary { background: var(--dark); color: white; border-color: var(--dark); }
+    .btn.secondary { border-color: var(--line); background: transparent; }
+    .portrait-card { background: var(--accent-light); border-radius: 34px; padding: 18px; transform: rotate(2deg); box-shadow: var(--shadow); }
+    .portrait-inner { min-height: 330px; border-radius: 24px; background: linear-gradient(145deg, #d5e3d9, #f1e8d8 58%, #b7cbbb); display: flex; flex-direction: column; justify-content: space-between; padding: 24px; overflow: hidden; position: relative; }
+    .portrait-inner:before { content: ""; position: absolute; width: 230px; height: 230px; border-radius: 50%; background: rgba(255,255,255,.45); top: 35px; right: -55px; }
+    .monogram { position: relative; font-size: 6rem; font-weight: 850; letter-spacing: -.1em; color: var(--accent); line-height: 1; }
+    .portrait-note { position: relative; font-size: .78rem; letter-spacing: .12em; text-transform: uppercase; color: #365b49; font-weight: 800; }
+    .small-label { color: var(--muted); font-size: .82rem; margin-top: 20px; text-align: center; }
+    section { padding: 72px 0; }
+    .section-head { display: flex; justify-content: space-between; align-items: end; gap: 25px; margin-bottom: 30px; }
+    .kicker { color: var(--accent); text-transform: uppercase; letter-spacing: .14em; font-size: .76rem; font-weight: 800; }
+    h2 { font-size: clamp(2rem, 4vw, 3.1rem); letter-spacing: -.06em; line-height: 1.1; margin: 10px 0 0; }
+    .section-intro { max-width: 470px; color: var(--muted); margin: 0; }
+    .about-grid { display: grid; grid-template-columns: .8fr 1.2fr; gap: 26px; }
+    .statement { padding: 30px; border-radius: var(--radius); background: var(--dark); color: white; min-height: 260px; display: flex; flex-direction: column; justify-content: space-between; }
+    .statement .quote { font-size: 1.7rem; line-height: 1.25; letter-spacing: -.04em; }
+    .statement small { color: #b8c8bf; }
+    .about-copy { padding: 30px; border: 1px solid var(--line); background: var(--surface); border-radius: var(--radius); }
+    .about-copy p { color: var(--muted); margin-top: 0; }
+    .pillrow { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 22px; }
+    .pill { border: 1px solid var(--line); border-radius: 999px; padding: 7px 12px; font-size: .82rem; color: #435149; background: #fbfcfa; }
+    .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .card { padding: 25px; background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); transition: transform .2s, box-shadow .2s; }
+    .card:hover { transform: translateY(-4px); box-shadow: var(--shadow); }
+    .card-num { color: var(--accent); font-size: .8rem; font-weight: 800; letter-spacing: .12em; }
+    .card h3 { font-size: 1.25rem; letter-spacing: -.035em; margin: 24px 0 8px; }
+    .card p { color: var(--muted); font-size: .94rem; margin: 0; }
+    .work-card { background: #e8eee8; border-radius: var(--radius); overflow: hidden; border: 1px solid #dce5dd; }
+    .work-visual { min-height: 180px; padding: 22px; display: flex; align-items: end; background: linear-gradient(135deg,#dbe7dd,#f4e9d7); }
+    .work-visual span { font-size: 2.3rem; font-weight: 850; letter-spacing: -.07em; color: var(--accent); }
+    .work-body { padding: 22px; background: var(--surface); }
+    .work-body h3 { margin: 0 0 7px; }
+    .work-body p { margin: 0; color: var(--muted); font-size: .9rem; }
+    .note { margin-top: 18px; color: var(--muted); font-size: .86rem; }
+    .contact { background: var(--dark); color: white; border-radius: 30px; padding: clamp(28px, 6vw, 60px); display: grid; grid-template-columns: 1fr auto; gap: 25px; align-items: end; }
+    .contact .kicker { color: #9ec4ad; }
+    .contact h2 { max-width: 600px; }
+    .contact p { color: #c0ccc5; max-width: 560px; }
+    .contact .btn { background: white; color: var(--dark); border-color: white; white-space: nowrap; }
+    footer { padding: 28px 0 38px; color: var(--muted); font-size: .85rem; }
+    .footer-row { display: flex; justify-content: space-between; gap: 20px; flex-wrap: wrap; }
+    .socials { display: flex; gap: 17px; }
+    .textlink { text-decoration: underline; text-decoration-color: #bdc9c0; text-underline-offset: 4px; }
+    @media (max-width: 760px) {
+      .wrap { width: min(100% - 28px, 600px); }
+      .nav { min-height: 66px; }
+      .menu { display: inline-flex; }
+      .navlinks { display: none; position: absolute; top: 65px; left: 14px; right: 14px; padding: 18px; background: white; border: 1px solid var(--line); border-radius: 16px; flex-direction: column; align-items: stretch; gap: 14px; box-shadow: var(--shadow); }
+      .navlinks.open { display: flex; }
+      .hero { padding: 62px 0 45px; grid-template-columns: 1fr; gap: 35px; }
+      .portrait-card { max-width: 390px; margin: 0 auto; width: 90%; }
+      .portrait-inner { min-height: 260px; }
+      .monogram { font-size: 5rem; }
+      section { padding: 52px 0; }
+      .section-head { align-items: start; flex-direction: column; }
+      .about-grid, .cards { grid-template-columns: 1fr; }
+      .statement { min-height: 220px; }
+      .contact { grid-template-columns: 1fr; align-items: start; }
+      .contact .btn { justify-self: start; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap nav">
+      <a class="brand" href="#beranda" aria-label="Teddy, beranda">teddy<span>.</span></a>
+      <button class="menu" id="menuButton" aria-expanded="false" aria-controls="navlinks">Menu ☰</button>
+      <nav class="navlinks" id="navlinks">
+        <a href="#tentang">Tentang</a>
+        <a href="#fokus">Fokus</a>
+        <a href="#karya">Karya</a>
+        <a href="#kontak">Kontak</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="wrap hero" id="beranda">
+      <div>
+        <div class="eyebrow"><span class="dot"></span> Kreatif · Terus bertumbuh</div>
+        <h1>Membangun ide.<br><em>Menciptakan arti.</em></h1>
+        <p class="lead">Halo, saya Teddy. Saya tertarik pada kreativitas, dunia digital, dan cara mengubah ide sederhana menjadi sesuatu yang bermanfaat.</p>
+        <div class="actions">
+          <a class="btn primary" href="#karya">Lihat karya <span aria-hidden="true">↗</span></a>
+          <a class="btn secondary" href="#tentang">Kenali saya</a>
+        </div>
+      </div>
+      <div>
+        <div class="portrait-card">
+          <div class="portrait-inner">
+            <div class="portrait-note">Personal space / 001</div>
+            <div class="monogram">T.</div>
+            <div class="portrait-note">Curiosity • Creativity • Growth</div>
+          </div>
+        </div>
+        <div class="small-label">Ruang digital untuk ide dan perjalanan saya.</div>
+      </div>
+    </div>
+
+    <section id="tentang">
+      <div class="wrap">
+        <div class="section-head">
+          <div><div class="kicker">01 / Tentang saya</div><h2>Selalu belajar,<br>selalu berkembang.</h2></div>
+          <p class="section-intro">Saya percaya hal besar bisa dimulai dari langkah kecil, rasa ingin tahu, dan keberanian untuk mencoba.</p>
+        </div>
+        <div class="about-grid">
+          <div class="statement">
+            <div class="kicker">Prinsip saya</div>
+            <div class="quote">“Jangan hanya menjadi penonton. Coba buat sesuatu.”</div>
+            <small>Catatan pribadi</small>
+          </div>
+          <div class="about-copy">
+            <p>Website ini adalah tempat untuk memperkenalkan diri, membagikan proses kreatif, dan mengumpulkan karya yang sedang saya kembangkan. Saya sedang membangun kemampuan di dunia digital, satu proyek pada satu waktu.</p>
+            <p>Bagian ini bisa kamu ubah dengan cerita pribadi, pengalaman, pencapaian, atau hal yang ingin orang lain kenal tentang dirimu.</p>
+            <div class="pillrow"><span class="pill">Kreativitas</span><span class="pill">Konten digital</span><span class="pill">Belajar hal baru</span><span class="pill">Personal branding</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="fokus">
+      <div class="wrap">
+        <div class="section-head">
+          <div><div class="kicker">02 / Fokus</div><h2>Hal yang saya<br>kembangkan.</h2></div>
+          <p class="section-intro">Tiga bidang yang bisa menjadi identitas dan arah perjalanan kreatifmu.</p>
+        </div>
+        <div class="cards">
+          <article class="card"><div class="card-num">01 — IDE</div><h3>Eksplorasi kreatif</h3><p>Mencari sudut pandang baru dan mengubah inspirasi menjadi konsep yang menarik.</p></article>
+          <article class="card"><div class="card-num">02 — DIGITAL</div><h3>Membangun karya</h3><p>Mencoba format, alat, dan platform digital untuk membuat sesuatu yang berguna.</p></article>
+          <article class="card"><div class="card-num">03 — GROWTH</div><h3>Belajar konsisten</h3><p>Mengembangkan kemampuan lewat eksperimen, evaluasi, dan langkah kecil setiap hari.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="karya">
+      <div class="wrap">
+        <div class="section-head">
+          <div><div class="kicker">03 / Pilihan karya</div><h2>Proses menjadi<br>portofolio.</h2></div>
+          <p class="section-intro">Gunakan ruang ini untuk menampilkan proyek, konten, pencapaian, atau eksperimen terbaikmu.</p>
+        </div>
+        <div class="cards">
+          <article class="work-card"><div class="work-visual"><span>01 / CONTENT</span></div><div class="work-body"><h3>Eksperimen konten</h3><p>Tambahkan tautan ke video TikTok, Reels, atau konten yang paling kamu banggakan.</p></div></article>
+          <article class="work-card"><div class="work-visual" style="background:linear-gradient(135deg,#e8dfd3,#d6e3e0)"><span>02 / DESIGN</span></div><div class="work-body"><h3>Proyek kreatif</h3><p>Tampilkan desain, foto, ide visual, atau proyek digital yang pernah kamu buat.</p></div></article>
+          <article class="work-card"><div class="work-visual" style="background:linear-gradient(135deg,#e4e8d8,#e8dbe0)"><span>03 / JOURNEY</span></div><div class="work-body"><h3>Perjalanan belajar</h3><p>Ceritakan proses, pelajaran, dan perkembangan yang ingin kamu bagikan.</p></div></article>
+        </div>
+        <p class="note">Catatan: kartu di atas masih contoh. Ganti dengan karya dan tautan milikmu sebelum dipublikasikan.</p>
+      </div>
+    </section>
+
+    <section id="kontak">
+      <div class="wrap">
+        <div class="contact">
+          <div><div class="kicker">04 / Mari terhubung</div><h2>Punya ide menarik? Mari mulai percakapan.</h2><p>Terbuka untuk bertukar ide, berkolaborasi, atau sekadar menyapa. Tambahkan email dan akun sosialmu di sini.</p></div>
+          <a class="btn" href="mailto:emailkamu@example.com">Hubungi saya ↗</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap footer-row">
+      <div>© <span id="year"></span> Teddy. Dibuat dengan niat baik.</div>
+      <div class="socials"><a class="textlink" href="#" aria-label="Instagram">Instagram</a><a class="textlink" href="#" aria-label="TikTok">TikTok</a><a class="textlink" href="#" aria-label="LinkedIn">LinkedIn</a></div>
+    </div>
+  </footer>
+  <script>
+    const menuButton = document.getElementById('menuButton');
+    const navlinks = document.getElementById('navlinks');
+    menuButton.addEventListener('click', () => {
+      const open = navlinks.classList.toggle('open');
+      menuButton.setAttribute('aria-expanded', String(open));
+    });
+    navlinks.querySelectorAll('a').forEach(link => link.addEventListener('click', () => {
+      navlinks.classList.remove('open');
+      menuButton.setAttribute('aria-expanded', 'false');
+    }));
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
