@@ -107,6 +107,61 @@
       .contact { grid-template-columns: 1fr; align-items: start; }
       .contact .btn { justify-self: start; }
     }
+    
+/* Teddy Creative — Premium polish */
+:root {
+  --radius: 28px;
+  --shadow: 0 22px 60px rgba(23, 33, 29, .10);
+}
+
+body {
+  letter-spacing: -0.01em;
+}
+
+header {
+  background: rgba(247, 247, 244, .88);
+}
+
+.brand {
+  letter-spacing: -0.07em;
+}
+
+.btn {
+  transition: transform .25s ease, box-shadow .25s ease,
+    background .25s ease;
+}
+
+.btn.primary {
+  box-shadow: 0 8px 22px rgba(17, 28, 24, .12);
+}
+
+.portrait-card,
+.card,
+.work-card {
+  box-shadow: 0 10px 32px rgba(23, 33, 29, .045);
+  transition: transform .25s ease, box-shadow .25s ease;
+}
+
+.card:hover,
+.work-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 18px 40px rgba(23, 33, 29, .09);
+}
+
+::selection {
+  background: #245c49;
+  color: white;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+}
+
   </style>
 </head>
 <body>
